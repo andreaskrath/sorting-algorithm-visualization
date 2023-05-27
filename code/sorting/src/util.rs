@@ -73,6 +73,13 @@ pub fn generate_frame(input: &mut Vec<u16>, frames: &mut Vec<gif::Frame>) {
             } else {
                 pixels.append(&mut gray_pixel.clone());
             }
+
+            // for disco mode
+            // pixels.append(&mut vec![
+            //     rand::thread_rng().gen_range(0..=254),
+            //     rand::thread_rng().gen_range(0..=254),
+            //     rand::thread_rng().gen_range(0..=254),
+            // ]);
         }
         // Doing the same for white, but the negative space instead
         for _ in 0..vector_length - *num as usize {
