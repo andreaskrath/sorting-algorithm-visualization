@@ -48,14 +48,14 @@ pub fn generate_frame(input: &mut Vec<u16>, frames: &mut Vec<gif::Frame>) {
     for num in input.iter() {
         // Inserting black pixels for the value of the num
         for _ in 0..*num {
-            // if num % 2 == 0 {
-            //     pixels.push(black_pixel);
-            // } else {
-            //     pixels.push(gray_pixel);
-            // }
+            if num % 2 == 0 {
+                pixels.push(black_pixel);
+            } else {
+                pixels.push(gray_pixel);
+            }
 
             // for disco mode
-            pixels.push(Pixel::random());
+            // pixels.push(Pixel::random());
         }
         // Doing the same for white, but the negative space instead
         for _ in 0..vector_length - *num as usize {
@@ -77,6 +77,7 @@ fn convert_pixel_vec_to_rgb_vec(pixel_vec: Vec<Pixel>) -> Vec<u8> {
         rgb_vec.push(pixel.red);
         rgb_vec.push(pixel.green);
         rgb_vec.push(pixel.blue);
+        rgb_vec.append(&mut vec![pixel.red, pixel.green, pixel.blue]);
     }
 
     rgb_vec
