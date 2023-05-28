@@ -77,7 +77,7 @@ fn convert_pixel_vec_to_rgb_vec(pixel_vec: Vec<Pixel>) -> Vec<u8> {
         rgb_vec.push(pixel.red);
         rgb_vec.push(pixel.green);
         rgb_vec.push(pixel.blue);
-        rgb_vec.append(&mut vec![pixel.red, pixel.green, pixel.blue]);
+        //rgb_vec.append(&mut vec![pixel.red, pixel.green, pixel.blue]);
     }
 
     rgb_vec
