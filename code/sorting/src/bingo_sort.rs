@@ -1,6 +1,6 @@
 use gif::Frame;
 
-use crate::util::generate_frame;
+use crate::image::generate_frame;
 
 pub fn bingo_sort(input: &mut Vec<u16>, frames: &mut Vec<Frame>) {
     if input.len() < 2 {
