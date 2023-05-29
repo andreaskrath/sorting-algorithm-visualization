@@ -29,8 +29,25 @@ impl Pixel {
 fn rotate_vec_counter_clockwise(vec: &mut [Pixel], frame_width: usize) {
     let mut rotated_vec = vec![Pixel::default(); vec.len()];
 
+    // The rotation is achieved by mapping a row in the interpretted input matrix,
+    // to a column in the rotated interpretted matrix.
     for i in 0..frame_width {
         for (normal_j, rev_j) in (0..frame_width).rev().enumerate() {
+            // On the first iteration the index on rotated_vec is
+            // frame_width * (frame_width - 1) + 0 which represents the
+            // very last index of the 0th column of the interpretted matrix.
+            // Due to the inner loop providing both a reverse and normal index
+            // each iteration of the inner loop uses the reverse index to up one row up,
+            // but stay in same column, so that row 0 in the input vector is mapped to
+            // column 0 (although in reverse order, from end to start); the same applied
+            // for the other row/column pairs in the interpretted matrices.
+            //
+            // A visual representation would be the following; x is the input, y is the output.
+            //
+            //          x1 x2 x3       y3 y6 y9
+            //          x4 x5 x6   =>  y2 y5 y8
+            //          x7 x8 x9       y1 y4 y7
+            //
             rotated_vec[frame_width * rev_j + i] = vec[frame_width * i + normal_j];
         }
     }
