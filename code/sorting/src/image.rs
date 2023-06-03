@@ -52,7 +52,7 @@ fn rotate_vec_counter_clockwise(vec: &mut [Pixel], frame_width: usize) {
         }
     }
 
-    vec.clone_from_slice(&rotated_vec[..]);
+    vec.copy_from_slice(&rotated_vec);
 }
 
 pub fn generate_frame(input: &mut Vec<u16>, frames: &mut Vec<gif::Frame>) {
